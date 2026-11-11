@@ -1,0 +1,22 @@
+﻿# Private credentials
+.env
+.env.*
+!.env.example
+.aws/
+*.pem
+*.key
+*.p12
+*.pfx
+*credentials*.csv
+
+# Python virtual environment and cache
+.venv/
+__pycache__/
+*.py[cod]
+
+# Local generated state and raw logs
+outputs/
+logs/
+
+# Local archives
+*.zip

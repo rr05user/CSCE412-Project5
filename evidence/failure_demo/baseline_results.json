@@ -1,0 +1,139 @@
+{
+  "timestamp": "2026-11-11T00:15:50.266178+00:00",
+  "agent": "verification_agent",
+  "domain": "csce412rahul021005.me",
+  "source_artifacts": [
+    "outputs/deployment_plan.json",
+    "outputs/aws_state.json"
+  ],
+  "checks": [
+    {
+      "check": "HTTPS /",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /index.html",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /about.html",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /projects.html",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /skills.html",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /contact.html",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /assets/style.css",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /assets/site.js",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTP to HTTPS redirect",
+      "passed": true,
+      "observed": {
+        "status": 301,
+        "location": "https://csce412rahul021005.me/"
+      }
+    },
+    {
+      "check": "Custom 404 response",
+      "passed": true,
+      "observed": {
+        "status": 404,
+        "location": ""
+      }
+    },
+    {
+      "check": "CloudFront delivery",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "Anonymous S3 access denied",
+      "passed": true,
+      "observed": {
+        "status": 403,
+        "location": ""
+      }
+    },
+    {
+      "check": "Valid matching TLS certificate",
+      "passed": true,
+      "observed": {
+        "dns_names": [
+          "csce412rahul021005.me"
+        ],
+        "protocol": "TLSv1.3"
+      }
+    },
+    {
+      "check": "S3 public access blocked",
+      "passed": true,
+      "observed": {
+        "PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": true,
+          "IgnorePublicAcls": true,
+          "BlockPublicPolicy": true,
+          "RestrictPublicBuckets": true
+        }
+      }
+    },
+    {
+      "check": "CloudFront deployed",
+      "passed": true,
+      "observed": {
+        "status": "Deployed",
+        "error": null
+      }
+    }
+  ],
+  "passed": 15,
+  "total": 15
+}

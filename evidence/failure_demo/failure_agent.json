@@ -1,0 +1,156 @@
+{
+  "timestamp": "2026-11-11T00:22:27.411685+00:00",
+  "agent": "verification_agent",
+  "domain": "csce412rahul021005.me",
+  "source_artifacts": [
+    "outputs/deployment_plan.json",
+    "outputs/aws_state.json"
+  ],
+  "checks": [
+    {
+      "check": "HTTPS /",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /index.html",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /about.html",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /projects.html",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /skills.html",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /contact.html",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /assets/style.css",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /assets/site.js",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTP to HTTPS redirect",
+      "passed": false,
+      "observed": {
+        "status": 404,
+        "location": ""
+      }
+    },
+    {
+      "check": "Custom 404 response",
+      "passed": true,
+      "observed": {
+        "status": 404,
+        "location": ""
+      }
+    },
+    {
+      "check": "CloudFront delivery",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "Anonymous S3 access denied",
+      "passed": true,
+      "observed": {
+        "status": 403,
+        "location": ""
+      }
+    },
+    {
+      "check": "Valid matching TLS certificate",
+      "passed": true,
+      "observed": {
+        "dns_names": [
+          "csce412rahul021005.me"
+        ],
+        "protocol": "TLSv1.3"
+      }
+    },
+    {
+      "check": "S3 public access blocked",
+      "passed": true,
+      "observed": {
+        "PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": true,
+          "IgnorePublicAcls": true,
+          "BlockPublicPolicy": true,
+          "RestrictPublicBuckets": true
+        }
+      }
+    },
+    {
+      "check": "CloudFront deployed",
+      "passed": false,
+      "observed": {
+        "status": "InProgress",
+        "error": null
+      }
+    }
+  ],
+  "passed": 13,
+  "total": 15,
+  "analysis": {
+    "summary": "The website csce412rahul021005.me is mostly functional with successful HTTPS content delivery, valid TLS certificate, and proper S3 bucket access restrictions. However, the HTTP to HTTPS redirect is failing with a 404 status, and the CloudFront distribution deployment is still in progress and not yet completed.",
+    "likely_causes": [
+      "HTTP to HTTPS redirect fails likely because the HTTP listener or redirect behavior is not configured in CloudFront or the origin is not handling HTTP requests properly.",
+      "CloudFront distribution deployment is incomplete, possibly due to pending configuration changes or propagation delays."
+    ],
+    "proposed_actions": [
+      "Review and configure CloudFront behaviors to ensure HTTP requests are redirected to HTTPS, enabling the HTTP to HTTPS redirect.",
+      "Verify that the CloudFront distribution configuration is complete and check AWS console or CLI for deployment status and errors.",
+      "Wait for CloudFront distribution deployment to complete before retesting, as 'InProgress' status indicates ongoing deployment."
+    ],
+    "limitations": [
+      "No direct evidence from AWS console or logs about CloudFront configuration details or errors is available.",
+      "Cannot confirm if HTTP to HTTPS redirect is intended to be handled by CloudFront or origin server based on provided data.",
+      "No information on DNS or Route 53 configuration to verify if HTTP requests are routed correctly."
+    ]
+  }
+}

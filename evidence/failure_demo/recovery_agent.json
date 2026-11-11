@@ -1,0 +1,154 @@
+{
+  "timestamp": "2026-11-11T00:28:32.382334+00:00",
+  "agent": "verification_agent",
+  "domain": "csce412rahul021005.me",
+  "source_artifacts": [
+    "outputs/deployment_plan.json",
+    "outputs/aws_state.json"
+  ],
+  "checks": [
+    {
+      "check": "HTTPS /",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /index.html",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /about.html",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /projects.html",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /skills.html",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /contact.html",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /assets/style.css",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTPS /assets/site.js",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "HTTP to HTTPS redirect",
+      "passed": true,
+      "observed": {
+        "status": 301,
+        "location": "https://csce412rahul021005.me/"
+      }
+    },
+    {
+      "check": "Custom 404 response",
+      "passed": true,
+      "observed": {
+        "status": 404,
+        "location": ""
+      }
+    },
+    {
+      "check": "CloudFront delivery",
+      "passed": true,
+      "observed": {
+        "status": 200,
+        "location": ""
+      }
+    },
+    {
+      "check": "Anonymous S3 access denied",
+      "passed": true,
+      "observed": {
+        "status": 403,
+        "location": ""
+      }
+    },
+    {
+      "check": "Valid matching TLS certificate",
+      "passed": true,
+      "observed": {
+        "dns_names": [
+          "csce412rahul021005.me"
+        ],
+        "protocol": "TLSv1.3"
+      }
+    },
+    {
+      "check": "S3 public access blocked",
+      "passed": true,
+      "observed": {
+        "PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": true,
+          "IgnorePublicAcls": true,
+          "BlockPublicPolicy": true,
+          "RestrictPublicBuckets": true
+        }
+      }
+    },
+    {
+      "check": "CloudFront deployed",
+      "passed": true,
+      "observed": {
+        "status": "Deployed",
+        "error": null
+      }
+    }
+  ],
+  "passed": 15,
+  "total": 15,
+  "analysis": {
+    "summary": "All 15 verification checks for the domain csce412rahul021005.me passed successfully. The website is accessible over HTTPS with valid TLS certificates, CloudFront is properly deployed and delivering content, HTTP requests are redirected to HTTPS, custom 404 responses are configured, and S3 bucket access is securely restricted with public access blocked and anonymous access denied.",
+    "likely_causes": [],
+    "proposed_actions": [
+      "Continue monitoring the CloudFront distribution and S3 bucket policies to ensure ongoing security and availability.",
+      "Periodically renew and validate the TLS certificate to maintain secure HTTPS connections.",
+      "Maintain the current configuration for HTTP to HTTPS redirection and custom error responses to ensure consistent user experience."
+    ],
+    "limitations": [
+      "The verification only covers the specified checks and does not assess backend application logic or dynamic content.",
+      "No tests were performed on DNS resolution beyond TLS certificate domain matching.",
+      "Performance metrics such as latency or throughput were not evaluated.",
+      "Security beyond public access blocking (e.g., WAF, DDoS protection) was not assessed."
+    ]
+  }
+}
