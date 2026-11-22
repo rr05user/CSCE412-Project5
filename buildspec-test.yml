@@ -1,4 +1,4 @@
-﻿version: 0.2
+version: 0.2
 
 phases:
   install:
@@ -26,4 +26,5 @@ artifacts:
   files:
     - 'website/**/*'
     - 'scripts/deploy_website.py'
+    - 'scripts/verify_production.py'
     - 'buildspec-deploy.yml'

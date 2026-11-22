@@ -1,4 +1,4 @@
-﻿version: 0.2
+version: 0.2
 
 phases:
   install:
@@ -9,7 +9,10 @@ phases:
     commands:
       - test -f website/index.html
       - test -f website/release.json
+      - test -f scripts/verify_production.py
 
   build:
     commands:
       - python scripts/deploy_website.py
+      - export EXPECTED_RELEASE=$(python -c "import json; print(json.load(open('website/release.json'))['release_id'])")
+      - python scripts/verify_production.py
