@@ -1,0 +1,15 @@
+﻿version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.12
+
+  pre_build:
+    commands:
+      - test -f website/index.html
+      - test -f website/release.json
+
+  build:
+    commands:
+      - python scripts/deploy_website.py

@@ -1,22 +1,29 @@
-version: 0.2
+﻿version: 0.2
+
 phases:
   install:
     runtime-versions:
       python: 3.12
     commands:
       - python -m pip install pytest
+
   pre_build:
     commands:
       - python scripts/make_release.py
+
   build:
     commands:
       - python -m pytest -q tests --junitxml=reports/website-tests.xml
+
 reports:
   csce412-project6-tests:
     files:
       - website-tests.xml
     base-directory: reports
     file-format: JUNITXML
+
 artifacts:
   files:
     - 'website/**/*'
+    - 'scripts/deploy_website.py'
+    - 'buildspec-deploy.yml'

@@ -24,3 +24,5 @@ website/release.json
 reports/
 __pycache__/
 .pytest_cache/
+
+project6-backups/
