@@ -79,6 +79,7 @@ def diagnose(result):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--expected-release")
+    parser.add_argument("--execute-rollback", action="store_true")
     args = parser.parse_args()
 
     if args.expected_release:
@@ -96,6 +97,25 @@ def main():
         "rollback_executed": False,
         "approval_required": True
     }
+
+    if args.execute_rollback:
+        if result["passed"]:
+            print("Verification passed; rollback unnecessary.")
+        elif os.environ.get("CONFIRM_ROLLBACK") != "yes":
+            print("Rollback blocked: CONFIRM_ROLLBACK=yes required.")
+        else:
+            rollback = subprocess.run(
+                ["python", "scripts/rollback_website.py"],
+                cwd=ROOT,
+                capture_output=True,
+                text=True
+            )
+            report["rollback_executed"] = rollback.returncode == 0
+            report["rollback_result"] = {
+                "exit_code": rollback.returncode,
+                "stdout": rollback.stdout[-2000:],
+                "stderr": rollback.stderr[-2000:]
+            }
 
     OUTPUTS.mkdir(exist_ok=True)
     LOGS.mkdir(exist_ok=True)

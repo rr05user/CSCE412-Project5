@@ -1,4 +1,4 @@
-﻿"""CSCE 412: four-agent orchestration + approved AWS S3 tool execution."""
+﻿"""CSCE 412: five-agent orchestration + approved AWS execution."""
 import argparse
 import json
 import subprocess
@@ -169,9 +169,30 @@ def main():
                 "Live verification did not pass all 15 checks"
             )
 
+        handoff(
+            "Verification", "CI/CD Recovery",
+            "outputs/verification_results.json"
+        )
+
+        run_agent(
+            "CI/CD Recovery",
+            ["agents/cicd_recovery_agent.py"],
+            "outputs/recovery_plan.json"
+        )
+
+        recovery = load("outputs/recovery_plan.json")
+        audit["recovery"] = {
+            "verification_passed": recovery["verification"]["passed"],
+            "rollback_recommended": recovery["rollback_recommended"],
+            "rollback_executed": recovery["rollback_executed"]
+        }
+
+        if not recovery["verification"]["passed"]:
+            raise RuntimeError("CI/CD production verification failed")
+
         audit["status"] = "PASS"
         print(
-            "\nWORKFLOW PASS: Four agents, approved AWS tools, 15/15 live checks"
+            "\nWORKFLOW PASS: Five agents, approved AWS tools, 15/15 live checks"
         )
 
     except Exception as exc:
