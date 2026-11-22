@@ -35,3 +35,5 @@ These files extend the **existing** CSCE412-Project5 repository. They do not con
 - Not yet a complete pipeline: deployment, caching, live verification, rollback, and agent diagnosis come in subsequent steps.
 - The test suite assumes the documented five-page Project 5 HTML structure and `website/assets/site.js`; inspect failures to adapt if needed.
 - The pre-deploy tests validate local artifacts, but a production verification stage must independently check the real HTTPS domain.
+
+CI/CD automatic trigger verification - November 22, 2026.
